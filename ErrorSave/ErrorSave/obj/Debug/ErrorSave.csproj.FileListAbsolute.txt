@@ -1,0 +1,15 @@
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\ErrorSave.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\ErrorSave.pdb
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\obj\Debug\ErrorSave.csprojAssemblyReference.cache
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\obj\Debug\ErrorSave.csproj.CoreCompileInputs.cache
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\obj\Debug\ErrorSave.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\obj\Debug\ErrorSave.pdb
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.AccessControl.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.Permissions.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.AccessControl.xml
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.Permissions.xml
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\obj\Debug\ErrorSave.csproj.CopyComplete
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\ErrorSave\ErrorSave\bin\Debug\System.Configuration.ConfigurationManager.xml
