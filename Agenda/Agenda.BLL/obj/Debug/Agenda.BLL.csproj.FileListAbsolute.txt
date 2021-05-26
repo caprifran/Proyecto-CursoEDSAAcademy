@@ -1,0 +1,9 @@
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.pdb
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.pdb
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csprojAssemblyReference.cache
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.CoreCompileInputs.cache
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.CopyComplete
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.pdb
