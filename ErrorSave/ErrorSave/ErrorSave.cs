@@ -10,10 +10,11 @@ namespace ErrorSave
 {
     public class ErrorSave
     {
-        public static void volcarErrores(Exception err, string path)
+        public static void volcarErrores(Exception err)
         {
             try
             {
+                string path = ConfigurationManager.AppSettings["PATH"].ToString();
                 if (File.Exists(path)) 
                 {
                     List<string> listaErrores = new List<string>();
