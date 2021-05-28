@@ -51,6 +51,7 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\P
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\roslyn\VBCSCompiler.exe
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Antlr3.Runtime.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AppLoginBLL.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AspNet.ScriptManager.jQuery.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Microsoft.AspNet.FriendlyUrls.dll
@@ -62,11 +63,14 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\P
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Newtonsoft.Json.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\System.Web.Optimization.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\WebGrease.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AppLoginEntity.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AppLoginBLL.pdb
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\System.Web.Optimization.xml
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Newtonsoft.Json.xml
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Antlr3.Runtime.pdb
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\AppLoginEntity.pdb
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\es\System.Web.Optimization.resources.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLogin\obj\Debug\AppLogin.csprojAssemblyReference.cache

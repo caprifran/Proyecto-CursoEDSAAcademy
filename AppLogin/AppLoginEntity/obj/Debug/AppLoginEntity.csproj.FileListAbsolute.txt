@@ -1,0 +1,5 @@
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLoginEntity\bin\Debug\AppLoginEntity.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLoginEntity\bin\Debug\AppLoginEntity.pdb
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLoginEntity\obj\Debug\AppLoginEntity.csproj.CoreCompileInputs.cache
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLoginEntity\obj\Debug\AppLoginEntity.dll
+C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\AppLogin\AppLoginEntity\obj\Debug\AppLoginEntity.pdb

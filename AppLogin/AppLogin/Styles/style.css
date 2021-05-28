@@ -1,0 +1,62 @@
+﻿body{
+    background-color: #fafafa;
+}
+#MainContent_ContentLogin{
+    margin: auto;
+    font-family: cursive;
+}
+#MainContent_ContentLogin table {
+    border-collapse: initial;
+    padding: 10px;
+    background-color: #bafec3;
+    border-radius: 3px;
+}
+#MainContent_ContentLogin table td[align="right"] {
+    padding-right: 10px;
+}
+#MainContent_ContentLogin table tr:nth-child(1) td[align="center"] {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+#MainContent_ContentLogin table tr:nth-last-child(2) td[align="center"]{
+    border-radius: 3px;
+    padding: 5px;
+}
+#MainContent_ContentLogin table input[type="text"], #MainContent_ContentLogin table input[type="password"]{
+    border: none;
+    border-radius: 3px;
+    transition-duration: 0.5s;
+}
+#MainContent_ContentLogin table input[type="text"]:hover,
+#MainContent_ContentLogin table input[type="password"]:hover,
+#MainContent_ContentLogin table input[type="text"]:focus,
+#MainContent_ContentLogin table input[type="password"]:focus
+{
+    background-color: #ebebeb;
+}
+#MainContent_ContentLogin table input[type="submit"]{
+    border: none;
+    border-radius: 3px;
+    background-color: #3CA549;
+    color: whitesmoke;
+    transition-duration: 0.5s;
+}
+#MainContent_ContentLogin table tr:nth-last-child(1) td{
+    padding-top: 5px;
+}
+
+#MainContent_ContentLogin table input[type="submit"]:hover{
+    background-color: #2e7e38;
+}
+#MainContent_ContentLogin table input[type="checkbox"]{
+    margin-right: 5px;
+    transition: 0.5s;
+}
+#contentBienvenida {
+    text-align: center !important;
+    margin: 0 25%;
+    background-color: #bafec3;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: cursive;
+}
