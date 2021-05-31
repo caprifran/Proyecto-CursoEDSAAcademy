@@ -188,7 +188,6 @@ namespace Agenda
             SpanAviso.Attributes.Add("class", "activo");
             SpanAviso.InnerText = "No se han encontrado Contactos, intentelo de nuevo.";
         }
-        //TODO Hacer sobrecarga del metodo Imprimir que imprima 404 no hay coincidencia en la busqueda
         protected void Page_Init(object sender, EventArgs e)
         {
             TxtFechaIngresoD.Text = DateTime.Now.Date.AddDays(-30).ToString("dd/MM/yyyy");
