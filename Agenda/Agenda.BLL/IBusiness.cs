@@ -9,8 +9,12 @@ namespace Agenda.BLL
 {
     public interface IBusiness
     {
-        Contacto GetContactoByID(Contacto contacto);
+        Contacto GetContactoByID(int Id);
         List<Contacto> GetContactosByFilter(ContactoFilter contactoFilter);
         int getCantPaginas(int cantContacos);
+        void DeleteContacto(Contacto contacto);
+        void CambiarEstadoContacto(Contacto contacto);
+        void AgregarContacto(Contacto contacto);
+        void EditarContacto(Contacto contacto);
     }
 }

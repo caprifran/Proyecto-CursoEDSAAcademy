@@ -13,6 +13,8 @@ namespace Agenda
         private Business business;
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.business = new Business((List<Contacto>)Application["contactosEjemplo"]);
+
             if (IsPostBack) {
                 List<Button> btnsPaginas = new List<Button>();
 
@@ -135,7 +137,6 @@ namespace Agenda
             {
                 List<Contacto> contactos;
                 ContactoFilter filtros = new ContactoFilter();
-                this.business = new Business((List<Contacto>)Application["contactosEjemplo"]);
 
                 filtros.ApellidoNombre = TxtApellidoNombre.Text;
                 filtros.Pais = DDPais.SelectedValue;
@@ -180,10 +181,10 @@ namespace Agenda
         }
         protected void DeleteContacto_Click(object sender, EventArgs e)
         {
-            ImageButton boton = (ImageButton)sender;
-            GridViewRow row = (GridViewRow)boton.DataItemContainer;
-            Contacto contactoDelete = ((List<Contacto>)Application["contactosEjemplo"]).Find(contacto => contacto.Id == Int32.Parse(row.Cells[0].Text));
-            ((List<Contacto>)Application["contactosEjemplo"]).Remove(contactoDelete);
+            ImageButton button = (ImageButton)sender;
+            GridViewRow row = (GridViewRow)button.DataItemContainer;
+            Contacto contactoDelete = this.business.GetContactoByID(Int32.Parse(row.Cells[0].Text));
+            this.business.DeleteContacto(contactoDelete);;
 
             Response.Redirect("AgendaIndex.aspx");
         }
@@ -191,8 +192,8 @@ namespace Agenda
         {
             ImageButton boton = (ImageButton)sender;
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
-            bool contactoEstado = ((List<Contacto>)Application["contactosEjemplo"]).Find(contacto => contacto.Id == Int32.Parse(row.Cells[0].Text)).Activo;
-            ((List<Contacto>)Application["contactosEjemplo"]).Find(contacto => contacto.Id == Int32.Parse(row.Cells[0].Text)).Activo = !contactoEstado;
+            Contacto contacto = this.business.GetContactoByID(Int32.Parse(row.Cells[0].Text));
+            this.business.CambiarEstadoContacto(contacto);
 
             Response.Redirect("AgendaIndex.aspx");
         }

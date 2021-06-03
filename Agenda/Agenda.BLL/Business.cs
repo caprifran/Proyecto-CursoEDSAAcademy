@@ -15,9 +15,9 @@ namespace Agenda.BLL
             this.contactos = contactos;
         }
 
-        public Contacto GetContactoByID(Contacto contacto)
+        public Contacto GetContactoByID(int Id)
         {
-            return this.contactos.Single(p => p.Id.Equals(contacto.Id));
+            return this.contactos.Single(p => p.Id.Equals(Id));
         }
 
         public List<Contacto> GetContactosByFilter(ContactoFilter contactoFilter)
@@ -64,6 +64,38 @@ namespace Agenda.BLL
         public int getCantPaginas(int cantContactos)
         {
             return (int)Decimal.ToInt32(Math.Ceiling((decimal)this.contactos.Count / cantContactos));
+        }
+        public void DeleteContacto(Contacto contacto)
+        {
+            this.contactos.Remove(contacto);
+        }
+        public void CambiarEstadoContacto(Contacto contacto)
+        {
+            bool estadoContacto = contacto.Activo;
+            this.contactos.Find(c => c.Id == contacto.Id).Activo = !estadoContacto;
+        }
+        public void AgregarContacto(Contacto contacto)
+        {
+            this.contactos.Add(contacto);
+        }
+        public void EditarContacto(Contacto contacto)
+        {
+            Contacto contactoBLL = this.contactos.Find(c => c.Id == contacto.Id);
+
+            contactoBLL.ApellidoNombre = contacto.ApellidoNombre;
+            contactoBLL.Genero = contacto.Genero;
+            contactoBLL.Pais = contacto.Pais;
+            contactoBLL.Localidad = contacto.Localidad;
+            contactoBLL.ContactoInterno = contacto.ContactoInterno;
+            contactoBLL.Organizacion = contacto.Organizacion;
+            contactoBLL.Area = contacto.Area;
+            contactoBLL.Activo = contacto.Activo;
+            contactoBLL.Direccion = contacto.Direccion;
+            contactoBLL.TelFijo = contacto.TelFijo;
+            contactoBLL.TelCel = contacto.TelCel;
+            contactoBLL.Email = contacto.Email;
+            contactoBLL.Skype = contacto.Skype;
+
         }
     }
 }

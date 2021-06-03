@@ -6,14 +6,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using System.Text.RegularExpressions;
+using Agenda.BLL;
 
 namespace Agenda
 {
     public partial class ABMC : System.Web.UI.Page
     {
+        Business business;
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
         {
+            business = new Business((List<Contacto>)Application["contactosEjemplo"]);
+
             if (Cache["Accion"] != null || Cache["contacto"] != null)
             {
                 switch (Cache["Accion"])
@@ -94,37 +98,34 @@ namespace Agenda
 
             if (IsValid)
             {
-                Contacto contacto = new Contacto();
-                if ((string)Cache["Accion"] != "NuevoContacto")
+                this.contacto.ApellidoNombre = TxtApellidoNombre.Text;
+                this.contacto.Genero = DDGenero.SelectedValue;
+                this.contacto.Pais = DDPais.SelectedValue;
+                this.contacto.Localidad = TxtLocalidad.Text;
+                if (DDContactoInt.SelectedValue == "Si") this.contacto.ContactoInterno = true;
+                else this.contacto.ContactoInterno = false;
+                this.contacto.Organizacion = TxtOrganizacion.Text;
+                this.contacto.Area = DDArea.SelectedValue;
+                if (DDActivo.SelectedValue == "Si") this.contacto.Activo = true;
+                else this.contacto.Activo = false;
+                this.contacto.Direccion = TxtDireccion.Text;
+                this.contacto.TelFijo = TxtTelFijo.Text;
+                this.contacto.TelCel = TxtTelCel.Text;
+                this.contacto.Email = TxtEmail.Text;
+                this.contacto.Skype = TxtCuentaSkype.Text;
+                
+                switch (Cache["Accion"])
                 {
-                    contacto = ((List<Contacto>)Application["contactosEjemplo"]).Find(c => c.Id == this.contacto.Id);
-                    ((List<Contacto>)Application["contactosEjemplo"]).Remove(contacto);
+                    case "Edit":
+                        this.business.EditarContacto(this.contacto);
+                        break;
+
+                    case "NuevoContacto":
+                        contacto.Id = ((List<Contacto>)Application["contactosEjemplo"]).Count;
+                        contacto.FechaIngreso = DateTime.Now;
+                        this.business.AgregarContacto(this.contacto);
+                        break;
                 }
-                else
-                {
-                    contacto.Id = ((List<Contacto>)Application["contactosEjemplo"]).Count;
-                    contacto.FechaIngreso = DateTime.Now;
-                }
-
-                contacto.ApellidoNombre = TxtApellidoNombre.Text;
-                contacto.Genero = DDGenero.SelectedValue;
-                contacto.Pais = DDPais.SelectedValue;
-                contacto.Localidad = TxtLocalidad.Text;
-                if (DDContactoInt.SelectedValue == "Si") contacto.ContactoInterno = true;
-                else contacto.ContactoInterno = false;
-                contacto.Organizacion = TxtOrganizacion.Text;
-                contacto.Area = DDArea.SelectedValue;
-                if (DDActivo.SelectedValue == "Si") contacto.Activo = true;
-                else contacto.Activo = false;
-                contacto.Direccion = TxtDireccion.Text;
-                contacto.TelFijo = TxtTelFijo.Text;
-                contacto.TelCel = TxtTelCel.Text;
-                contacto.Email = TxtEmail.Text;
-                contacto.Skype = TxtCuentaSkype.Text;
-
-                ((List<Contacto>)Application["contactosEjemplo"]).Add(contacto);
-
-                List<Contacto> asdasd = ((List<Contacto>)Application["contactosEjemplo"]);
 
                 Response.Redirect("AgendaIndex.aspx");
             }
