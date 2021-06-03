@@ -3,17 +3,31 @@
     const organizacion = document.getElementById("MainContent_TxtOrganizacion");
     const area = document.getElementById("MainContent_DDArea");
 
-    area.disabled = true;
+
+    if (contactoInterno.options[contactoInterno.selectedIndex].text == "SI") {
+        organizacion.disabled = true
+        organizacion.value = "";
+        area.disabled = false;
+    } else if (contactoInterno.options[contactoInterno.selectedIndex].text == "NO") {
+        organizacion.disabled = false;
+        area.disabled = true;
+    } else {
+        organizacion.disabled = true;
+        area.disabled = true;
+    };
 
     contactoInterno.onchange = e => {
         if (contactoInterno.options[contactoInterno.selectedIndex].text == "SI") {
             organizacion.disabled = true
             organizacion.value = "";
             area.disabled = false;
-        } else {
+        } else if (contactoInterno.options[contactoInterno.selectedIndex].text == "NO") {
             organizacion.disabled = false;
             area.disabled = true;
-        };       
+        } else {
+            organizacion.disabled = true;
+            area.disabled = true;
+        };
     }    
 }
 

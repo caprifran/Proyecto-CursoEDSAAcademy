@@ -189,7 +189,7 @@ namespace Agenda
             cantPaginas = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactosEjemplo.Count / 5));
 
             Application["contactosEjemplo"] = contactosEjemplo;
-            Application["contactosEjemploAux"] = contactosEjemplo;
+            Application["contactosEjemploFiltrados"] = contactosEjemplo;
             Application["cantPaginas"] = cantPaginas;
             Application["nroPagina"] = nroPagina;
 

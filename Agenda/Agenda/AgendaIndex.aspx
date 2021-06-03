@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgendaIndex.aspx.cs" Inherits="Agenda.AgendaIndex" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgendaIndex.aspx.cs" Inherits="Agenda.AgendaIndex"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="contenedorFiltros">
         
@@ -64,7 +64,7 @@
         ControlToValidate="TxtFechaIngresoD" OnServerValidate="ValidacionFecha"></asp:CustomValidator>
     <div id="contenedorBtns">
         <asp:Button ID="BtnLimpiarFiltros" runat="server" OnClientClick="return LimpiarCampos()"/>
-        <asp:Button ID="BtnNuevoContacto" runat="server" Text="Nuevo Contacto" />
+        <asp:Button ID="BtnNuevoContacto" runat="server" Text="Nuevo Contacto" OnClick="BtnNuevoContacto_Click" />
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"/>
     </div>
     <div id="contenedorAvisos" >
@@ -73,8 +73,9 @@
     <div id="contenedorResultado" runat="server">
         <asp:GridView ID="GridViewConsulta" runat="server" 
             AutoGenerateColumns="false" RowStyle-HorizontalAlign="Center" 
-            Width="100%" GridLines="Horizontal" OnRowCommand="GridViewConsulta_RowCommand">
+            Width="100%" GridLines="Horizontal">
             <Columns>
+                <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True"/>
                 <asp:BoundField DataField="ApellidoNombre" HeaderText="Apellido y Nombre" ReadOnly="True"/>
                 <asp:BoundField DataField="Genero" HeaderText="Genero" ReadOnly="True"/>
                 <asp:BoundField DataField="Pais" HeaderText="País" ReadOnly="True"/>
@@ -89,12 +90,17 @@
                 <asp:BoundField DataField="TelCel" HeaderText="Tel Cel" ReadOnly="True"/>
                 <asp:BoundField DataField="Email" HeaderText="E-mail" ReadOnly="True"/>
                 <asp:BoundField DataField="Skype" HeaderText="Skype" ReadOnly="True"/>
+
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
-                        <asp:ImageButton ID="ZoomContacto" CommandName="Zoom" runat="server" ImageUrl="./Images/zoom.png"/>
-                        <asp:ImageButton ID="EditContacto" CommandName="Edit" runat="server" ImageUrl="./Images/edit.png"/>
-                        <asp:ImageButton ID="EliminarContacto" CommandName="Eliminar" runat="server" ImageUrl="./Images/delete.png"/>
-                        <asp:ImageButton ID="ActivarDesactivarContacto" CommandName="ActivarDesactivar" runat="server"/>
+                        <asp:ImageButton ID="ZoomContacto" CommandName="Zoom" runat="server" ImageUrl="./Images/zoom.png" OnClick="ZoomContacto_Click"></asp:ImageButton>
+                        <asp:ImageButton ID="EditContacto" CommandName="Edit" runat="server" ImageUrl="./Images/edit.png" OnClick="EditContacto_Click"></asp:ImageButton>
+                        <asp:ImageButton ID="DeleteContacto" CommandName="Delete" runat="server" ImageUrl="./Images/delete.png"
+                            OnClick="DeleteContacto_Click" OnClientClick="return window.confirm('¿Seguro que desea Eliminar el Contacto?');">
+                        </asp:ImageButton>
+                        <asp:ImageButton ID="ActivarDesactivarContacto" CommandName="ActDes" runat="server" 
+                            OnClick="ActivarDesactivarContacto_Click" OnClientClick="return window.confirm('¿Seguro que desea cambiar el estado del Contacto?');">
+                        </asp:ImageButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -102,7 +108,4 @@
     </div>
     <div id="contenedorBtnsPaginas" runat="server">
     </div>
-    
-    
-    
 </asp:Content>

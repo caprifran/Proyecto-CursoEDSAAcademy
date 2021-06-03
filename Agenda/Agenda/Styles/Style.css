@@ -20,7 +20,7 @@ form {
     float: right;
     width: 50%;
 }
-.form-group:not(:nth-child(3n+0)) {
+#contenedorFiltros .form-group:not(:nth-child(3n+0)) {
     margin-right: 1.5%;
 }
 #contenedorFiltros input,
@@ -74,9 +74,9 @@ form {
     background-size: contain;
     padding: 0 ;
 }
-    #contenedorBtns input:nth-child(1):hover {
-        transform: scale(1.2) rotate(20deg);
-    }
+#contenedorBtns input:nth-child(1):hover {
+    transform: scale(1.2) rotate(20deg);
+}
 
 /* Table Style */
 #MainContent_contenedorResultado {
@@ -100,21 +100,6 @@ form {
     border: none;
     border-radius: 3px;
 }
-#MainContent_contenedorResultado input#zoom {
-    background: url("../Images/zoom.png")
-}
-#MainContent_contenedorResultado input#edit {
-    background: url("../Images/edit.png")
-}
-#MainContent_contenedorResultado input#eliminar {
-    background: url("../Images/delete.png")
-}
-#MainContent_contenedorResultado input#estado.activo {
-    background: url("../Images/anular.png")
-}
-#MainContent_contenedorResultado input#estado.inactivo {
-    background: url("../Images/play_pause.png")
-}
 #MainContent_contenedorResultado tbody tr td:nth-last-child(1){
     white-space: nowrap;
 }
@@ -122,12 +107,10 @@ form {
     border-top: 2px solid #b5b5b5;
     border-bottom: 2px solid #b5b5b5;
 }
-
 #MainContent_contenedorBtnsPaginas {
     text-align: center;
     margin-top: 10px;
 }
-
 #MainContent_contenedorBtnsPaginas input {
     color: white;
     background-color: #332bdc;
@@ -135,26 +118,22 @@ form {
     border-radius: 3px;
     transition-duration: 0.5s;
 }
-
 #MainContent_contenedorBtnsPaginas input:not(:nth-last-child(1)){
     margin-right: 5px;
 }
-
 #MainContent_contenedorBtnsPaginas input.activo{
     background-color: #1d1981;
     transform: scale(1.05);
 }
-
 #MainContent_contenedorBtnsPaginas input:hover {
     background-color: #272290;
     transform: scale(1.05);
 }
-
 #contenedorAvisos span{ 
     overflow: hidden;
     display: block;
     height: 0;
-    max-height: 30px;
+    max-height: 80px;
     background-color: #ff8282;
     padding: 5px;
     margin-top: 10px;
@@ -169,5 +148,69 @@ form {
 }
 #contenedorAvisos span.activo{
     visibility: visible;
+    height: auto;
+}
+
+/*ABMC.aspx*/
+
+div#ABMCContent div.form-group input,
+div#ABMCContent div.form-group select {
+    float: right;
+    width: 50%;
+    border: solid 2px #b5b5b5;
+    border-radius: 3px;
+}
+/*6,11,15,18*/
+div#ABMCContent .form-group{
+    margin-right: 1.5%;
+}
+div#ABMCContent .form-group:nth-child(6),
+div#ABMCContent .form-group:nth-child(11),
+div#ABMCContent .form-group:nth-child(15),
+div#ABMCContent .form-group:nth-child(18){
+    margin-right: 0;
+}
+div#ABMCContent > span {
+    margin-left: -1.5%;
+    position: absolute;
+}
+div#ABMCContent > span:nth-child(7),
+div#ABMCContent > span:nth-child(19){
+    margin-left: 0;
+    position: initial;
+}
+div#ABMCContent div#contenedorBtnsABMC {
+    display: flow-root;
+}
+div#ABMCContent div#contenedorBtnsABMC input {
+    float: right;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    transition-duration: 0.5s;
+}
+div#ABMCContent div#contenedorBtnsABMC input:nth-child(2) {
+    background-color: #158f25;
+    margin-right: 5px;
+    width: 200px;
     height: 30px;
 }
+div#ABMCContent div#contenedorBtnsABMC input:nth-child(2):hover{
+    background-color: #0f691b;
+    transform: scale(1.02);
+}
+div#ABMCContent div#contenedorBtnsABMC input:nth-child(1) {
+    background-color: #332bdc;
+    width: 150px;
+    height: 30px;
+}
+div#ABMCContent div#contenedorBtnsABMC input:nth-child(1):hover{
+    background-color: #272290;
+    transform: scale(1.02);
+}
+
+div#ABMCContent #contenedorAvisos span {
+    text-align: left;
+    -webkit-user-modify: read-write-plaintext-only;
+}
+

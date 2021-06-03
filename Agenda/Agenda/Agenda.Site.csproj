@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ABMC.aspx" />
     <Content Include="About.aspx" />
     <Content Include="AgendaIndex.aspx" />
     <Content Include="Contact.aspx" />
@@ -169,6 +170,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMC.aspx.cs">
+      <DependentUpon>ABMC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ABMC.aspx.designer.cs">
+      <DependentUpon>ABMC.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgendaIndex.aspx.cs">
       <DependentUpon>AgendaIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
