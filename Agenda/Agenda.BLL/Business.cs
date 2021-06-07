@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Agenda.Entity.Contacto;
+using Agenda.DAL;
+using System.Data.SqlClient;
+
 namespace Agenda.BLL
 {
-    public class Business: IBusiness
+    public class Business: IBusiness, IDisposable
     {
-        private List<Contacto> contactos;
+        public List<Contacto> contactos { get; set; }
 
-        public Business(List<Contacto> contactos)
+        /*public Business(List<Contacto> contactos)
         {
             this.contactos = contactos;
-        }
+        }*/
 
         public Contacto GetContactoByID(int Id)
         {
@@ -40,11 +43,11 @@ namespace Agenda.BLL
                 contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.FechaIngreso >= ingresoD && contacto.FechaIngreso <= ingresoH).OrderBy(contacto => contacto.ApellidoNombre).ToList();
             }
 
-            if(contactoFilter.ContactoInterno != "TODOS")
+            /*if(contactoFilter.ContactoInterno != "TODOS")
             {
                 if (contactoFilter.ContactoInterno == "SI") contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.ContactoInterno == true).OrderBy(contacto => contacto.ApellidoNombre).ToList();
                 if (contactoFilter.ContactoInterno == "NO") contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.ContactoInterno == false).OrderBy(contacto => contacto.ApellidoNombre).ToList();
-            }
+            }*/
 
             if (!string.IsNullOrEmpty(contactoFilter.Organizacion))
                 contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.Organizacion.Contains(contactoFilter.Organizacion)).OrderBy(contacto => contacto.ApellidoNombre).ToList();
@@ -52,12 +55,12 @@ namespace Agenda.BLL
             if (contactoFilter.Area != "TODOS")
                 contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.Area.Contains(contactoFilter.Area)).OrderBy(contacto => contacto.ApellidoNombre).ToList();
 
-            if (contactoFilter.Activo != "TODOS")
+/*            if (contactoFilter.Activo != "TODOS")
             {
                 if (contactoFilter.Activo == "SI") contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.Activo == true).OrderBy(contacto => contacto.ApellidoNombre).ToList();
                 if (contactoFilter.Activo == "NO") contactosFiltrados = contactosFiltrados.FindAll(contacto => contacto.Activo == false).OrderBy(contacto => contacto.ApellidoNombre).ToList();
             }
-
+*/
             return contactosFiltrados;
         }
 
@@ -96,6 +99,108 @@ namespace Agenda.BLL
             contactoBLL.Email = contacto.Email;
             contactoBLL.Skype = contacto.Skype;
 
+        }
+
+        public void AbrirConexion()
+        {
+            try
+            {
+                using (DataAccessLayer dal = new DataAccessLayer())
+                {
+                    var connection = dal.AbrirConexion();
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+        public List<Contacto> GetContactosByFilterSql(ContactoFilter contactoFilter)
+        {
+            try
+            {
+                using (DataAccessLayer dal = new DataAccessLayer())
+                {
+                    var connection = dal.AbrirConexion();
+                    SqlDataReader contactosSql = dal.GetContactosByFilter(connection, contactoFilter);
+                    List<Contacto> result = new List<Contacto>();
+
+                    if (contactosSql.HasRows)
+                    {
+                        while (contactosSql.Read()) { 
+                            result.Add(new Contacto
+                            {
+                                Id = contactosSql.GetInt32(0),
+                                ApellidoNombre = contactosSql.GetString(1),
+                                Genero = contactosSql.GetString(2),
+                                Pais = contactosSql.GetString(3),
+                                Localidad = contactosSql.GetString(4),
+                                ContactoInterno = contactosSql.GetString(5) == "1" ? true : false,
+                                Organizacion = contactosSql.GetString(6),
+                                Area = contactosSql.GetString(7),
+                                FechaIngreso = contactosSql.GetDateTime(8),
+                                Activo = contactosSql.GetString(9) == "1" ? true : false,
+                                Direccion = contactosSql.GetString(10),
+                                TelFijo = contactosSql.GetString(11),
+                                TelCel = contactosSql.GetString(12),
+                                Email = contactosSql.GetString(13),
+                                Skype = contactosSql.GetString(14)
+                            });
+                        };
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public Contacto getContactoByIdSQL(int Id)
+        {
+            try
+            {
+                using (DataAccessLayer dal = new DataAccessLayer())
+                {
+                    var connection = dal.AbrirConexion();
+                    var reader = dal.GetContactoById(connection, Id);
+                    Contacto result = new Contacto();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            result = new Contacto
+                            {
+                                Id = reader.GetInt32(0),
+                                ApellidoNombre = reader.GetString(1),
+                                Genero = reader.GetString(2),
+                                Pais = reader.GetString(3),
+                                Localidad = reader.GetString(4),
+                                ContactoInterno = reader.GetString(5) == "1" ? true : false,
+                                Organizacion = reader.GetString(6),
+                                Area = reader.GetString(7),
+                                FechaIngreso = reader.GetDateTime(8),
+                                Activo = reader.GetString(9) == "1" ? true : false,
+                                Direccion = reader.GetString(10),
+                                TelFijo = reader.GetString(11),
+                                TelCel = reader.GetString(12),
+                                Email = reader.GetString(13),
+                                Skype = reader.GetString(14)
+                            };
+                        };
+                    };
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public void Dispose()
+        {
         }
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Agenda.DAL.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Agenda.DAL.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Agenda.Entity.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Utils.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Agenda.Entity.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\bin\Debug\Utils.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\obj\Debug\Agenda.DAL.csproj.AssemblyReference.cache
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\obj\Debug\Agenda.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\obj\Debug\Agenda.DAL.csproj.CopyComplete
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\obj\Debug\Agenda.DAL.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.DAL\obj\Debug\Agenda.DAL.pdb

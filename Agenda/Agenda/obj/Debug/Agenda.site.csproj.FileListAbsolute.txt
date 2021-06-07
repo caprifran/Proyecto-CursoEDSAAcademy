@@ -158,6 +158,7 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\P
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.pdb
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.Site.csprojAssemblyReference.cache
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.Site.csproj.CoreCompileInputs.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.dll.config
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.pdb
@@ -224,6 +225,8 @@ C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Newtonsoft.Json.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\System.Web.Optimization.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\WebGrease.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.DAL.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Utils.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.BLL.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.Entity.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\System.Web.Optimization.xml
@@ -231,10 +234,11 @@ C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Antlr3.Runtime.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Agenda.DAL.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\Utils.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.Site.csproj.AssemblyReference.cache
-C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.Site.csproj.CoreCompileInputs.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.Site.csproj.CopyComplete
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda\obj\Debug\Agenda.pdb

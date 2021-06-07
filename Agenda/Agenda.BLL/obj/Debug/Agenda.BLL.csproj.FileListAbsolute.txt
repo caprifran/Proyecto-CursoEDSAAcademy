@@ -7,12 +7,16 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\A
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.CopyComplete
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.dll
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.pdb
-C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.dll
-C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.pdb
-C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.dll
-C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.AssemblyReference.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.BLL.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.DAL.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Utils.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.DAL.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Agenda.Entity.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\bin\Debug\Utils.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.csproj.CopyComplete
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.BLL\obj\Debug\Agenda.BLL.pdb

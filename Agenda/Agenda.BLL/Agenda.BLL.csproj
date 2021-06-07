@@ -46,9 +46,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Agenda.DAL\Agenda.DAL.csproj">
+      <Project>{86411473-53d4-4031-9fa2-a06f20402fc5}</Project>
+      <Name>Agenda.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agenda.Entity\Agenda.Entity.csproj">
       <Project>{03cb7ed6-88c4-4034-92bc-cf79794ee173}</Project>
       <Name>Agenda.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{05d7b1bb-b90b-46b9-88e2-ef3579dbdff1}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

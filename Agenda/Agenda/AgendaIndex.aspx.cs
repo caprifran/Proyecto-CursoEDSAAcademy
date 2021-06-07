@@ -13,7 +13,8 @@ namespace Agenda
         private Business business;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.business = new Business((List<Contacto>)Application["contactosEjemplo"]);
+            this.business = new Business();
+            business.contactos = (List<Contacto>)Application["contactosEjemplo"];
 
             if (IsPostBack) {
                 List<Button> btnsPaginas = new List<Button>();
@@ -136,21 +137,36 @@ namespace Agenda
             if (Page.IsValid)
             {
                 List<Contacto> contactos;
-                ContactoFilter filtros = new ContactoFilter();
+                
+                /*
+                                filtros.ApellidoNombre = TxtApellidoNombre.Text;
+                                filtros.Pais = DDPais.SelectedValue;
+                                filtros.Localidad = TxtLocalidad.Text;
+                                filtros.FechaIngresoD = TxtFechaIngresoD.Text;
+                                filtros.FechaIngresoH = TxtFechaIngresoH.Text;
+                                filtros.ContactoInterno = DDContactoInt.SelectedValue;
+                                filtros.Organizacion = TxtOrganizacion.Text;
+                                filtros.Area = DDArea.SelectedValue;
+                                filtros.Activo = DDActivo.SelectedValue;*/
 
-                filtros.ApellidoNombre = TxtApellidoNombre.Text;
-                filtros.Pais = DDPais.SelectedValue;
-                filtros.Localidad = TxtLocalidad.Text;
-                filtros.FechaIngresoD = TxtFechaIngresoD.Text;
-                filtros.FechaIngresoH = TxtFechaIngresoH.Text;
-                filtros.ContactoInterno = DDContactoInt.SelectedValue;
-                filtros.Organizacion = TxtOrganizacion.Text;
-                filtros.Area = DDArea.SelectedValue;
-                filtros.Activo = DDActivo.SelectedValue;
+                using (Business business = new Business())
+                {
+                    ContactoFilter filtros = new ContactoFilter();
+                    filtros.ApellidoNombre = TxtApellidoNombre.Text;
+                    filtros.Pais = DDPais.SelectedValue;
+                    filtros.Localidad = TxtLocalidad.Text;
+                    filtros.FechaIngresoD = TxtFechaIngresoD.Text;
+                    filtros.FechaIngresoH = TxtFechaIngresoH.Text;
+                    filtros.ContactoInterno = DDContactoInt.SelectedValue == "True"? 1 : 2;
+                    filtros.Organizacion = TxtOrganizacion.Text;
+                    filtros.Area = DDArea.SelectedValue;
+                    filtros.Activo = DDActivo.SelectedValue == "True"? 1 : 2;
 
-                contactos = business.GetContactosByFilter(filtros);
-                Session["contactosEjemploFiltrados"] = contactos;
-                Application["cantPaginas"] = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactos.Count / 5));
+                    //contactos = business.getContactosByFilterSQL(filtros);
+                }
+                //contactos = business.GetContactosByFilter(filtros);
+                //Session["contactosEjemploFiltrados"] = contactos;
+                //Application["cantPaginas"] = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactos.Count / 5));
                 Application["nroPagina"] = 1;
             }
             else

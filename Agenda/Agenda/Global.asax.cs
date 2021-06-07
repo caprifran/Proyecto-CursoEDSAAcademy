@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.SqlClient;
 
 namespace Agenda
 {
@@ -19,6 +20,12 @@ namespace Agenda
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             List<Contacto> contactosEjemplo = new List<Contacto>();
+
+            //ConectarseBD();
+            contactosEjemplo = getContactosByFilter();
+            //getContactoById();
+            
+            
 
             int idContacto = 0;
             int cantPaginas = 0;
@@ -193,6 +200,42 @@ namespace Agenda
             Application["cantPaginas"] = cantPaginas;
             Application["nroPagina"] = nroPagina;
 
+        }
+        
+        private static void ConectarseBD()
+        {
+            using (Business business = new Business())
+            {
+                business.AbrirConexion();
+            }
+        }
+        private static List<Contacto> getContactosByFilter()
+        {
+            using (Business business = new Business())
+            {
+                ContactoFilter filter = new ContactoFilter
+                {
+                    ApellidoNombre = "'ca'",
+                    Pais = "'Argentina'",
+                    Localidad = "'Rio'",
+                    FechaIngresoD = "'01/01/2021'",
+                    FechaIngresoH = "'01/12/2021'",
+                    ContactoInterno = 1,
+                    Organizacion = "'EDSA'",
+                    Area = "'Operaciones'",
+                    Activo = 1
+                };
+
+                List<Contacto> result = business.GetContactosByFilterSql(filter);
+                return result;
+            }
+        }
+        private static void getContactoById()
+        {
+            using (Business business = new Business())
+            {
+                business.getContactoByIdSQL(1);
+            }
         }
     }
 }

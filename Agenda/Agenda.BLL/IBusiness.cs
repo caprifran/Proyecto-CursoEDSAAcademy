@@ -11,10 +11,13 @@ namespace Agenda.BLL
     {
         Contacto GetContactoByID(int Id);
         List<Contacto> GetContactosByFilter(ContactoFilter contactoFilter);
+        List<Contacto> GetContactosByFilterSql(ContactoFilter contactoFilter);
+        Contacto getContactoByIdSQL(int Id);
         int getCantPaginas(int cantContacos);
         void DeleteContacto(Contacto contacto);
         void CambiarEstadoContacto(Contacto contacto);
         void AgregarContacto(Contacto contacto);
         void EditarContacto(Contacto contacto);
+        void AbrirConexion();
     }
 }

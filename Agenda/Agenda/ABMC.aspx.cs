@@ -16,7 +16,8 @@ namespace Agenda
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
         {
-            business = new Business((List<Contacto>)Application["contactosEjemplo"]);
+            business = new Business();
+            business.contactos = (List<Contacto>)Application["contactosEjemplo"];
 
             if (Cache["Accion"] != null || Cache["contacto"] != null)
             {
