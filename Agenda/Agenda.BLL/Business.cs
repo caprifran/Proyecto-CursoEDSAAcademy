@@ -12,11 +12,19 @@ namespace Agenda.BLL
 {
     public class Business : IBusiness, IDisposable
     {
+        private string Server, DBName;
+
+        public Business(string Server,string DBName)
+        {
+            this.Server = Server;
+            this.DBName = DBName;
+        }
+
         public void AbrirConexion()
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
                 }
@@ -30,7 +38,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -71,7 +79,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -107,7 +115,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -122,7 +130,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -137,7 +145,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -152,7 +160,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -166,7 +174,7 @@ namespace Agenda.BLL
         public List<string> getPaisesSQL(){
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -190,7 +198,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer())
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
                 {
                     var connection = dal.AbrirConexion();
 

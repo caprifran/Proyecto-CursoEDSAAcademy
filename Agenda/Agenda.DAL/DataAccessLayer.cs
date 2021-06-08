@@ -13,11 +13,11 @@ namespace Agenda.DAL
     {
         public SqlConnection connection;
 
-        public DataAccessLayer()
+        public DataAccessLayer(string Server, string DBName)
         {
             connection = new SqlConnection
             {
-                ConnectionString = Configuration.GetConnectionString()
+                ConnectionString = Configuration.GetConnectionString(Server, DBName)
             };
         }
 
@@ -58,10 +58,10 @@ namespace Agenda.DAL
             if (string.IsNullOrEmpty(filter.Localidad)) Localidad = DBNull.Value; else Localidad = filter.Localidad;
             if (string.IsNullOrEmpty(filter.FechaIngresoD)) FechaIngresoD = DBNull.Value; else FechaIngresoD = filter.FechaIngresoD;
             if (string.IsNullOrEmpty(filter.FechaIngresoH)) FechaIngresoH = DBNull.Value; else FechaIngresoH = filter.FechaIngresoH;
-            if (filter.ContactoInterno == "TODOS") ContactoInterno = DBNull.Value; else ContactoInterno = filter.ContactoInterno;
+            if (filter.ContactoInterno == "TODOS") ContactoInterno = DBNull.Value; else ContactoInterno = filter.ContactoInterno == "SI"? true : false;
             if (string.IsNullOrEmpty(filter.Organizacion)) Organizacion = DBNull.Value; else Organizacion = filter.Organizacion;
             if (filter.Area == "TODOS") Area = DBNull.Value; else Area = filter.Area;
-            if (filter.Activo == "TODOS") Activo = DBNull.Value; else Activo = filter.Activo;
+            if (filter.Activo == "TODOS") Activo = DBNull.Value; else Activo = filter.Activo == "SI"? true : false;
 
             cmd.Parameters.AddRange(new SqlParameter[]
             {

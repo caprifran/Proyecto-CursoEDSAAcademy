@@ -6,6 +6,16 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\A
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Utils\obj\Debug\Utils.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\Utils.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\Utils.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.AccessControl.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.Permissions.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.AccessControl.xml
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.Permissions.xml
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.csproj.AssemblyReference.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.csproj.CopyComplete
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.pdb

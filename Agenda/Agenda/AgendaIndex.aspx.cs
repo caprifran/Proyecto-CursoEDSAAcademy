@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using Agenda.BLL;
+using System.Configuration;
 namespace Agenda
 {
     public partial class AgendaIndex : System.Web.UI.Page
     {
-        private Business business;
+        private string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();  
+        private string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) {
@@ -50,20 +52,24 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            using (Business business = new Business())
-            {
-                List<string> paises = business.getPaisesSQL();
-                List<string> areas = business.getAreasSQL();
 
-                foreach (string pais in paises)
+            if(DDPais.Items.Count == 1 && DDArea.Items.Count == 1) {
+                using (Business business = new Business(this.ServerUrl, this.DBName))
                 {
-                    DDPais.Items.Add(new ListItem { Text = pais });
-                }
-                foreach (string area in areas)
-                {
-                    DDArea.Items.Add(new ListItem { Text = area });
+                    List<string> paises = business.getPaisesSQL();
+                    List<string> areas = business.getAreasSQL();
+
+                    foreach (string pais in paises)
+                    {
+                        DDPais.Items.Add(new ListItem { Text = pais });
+                    }
+                    foreach (string area in areas)
+                    {
+                        DDArea.Items.Add(new ListItem { Text = area });
+                    }
                 }
             }
+            
             if (IsPostBack)
             {
                 GridViewConsulta.DataSource = null;
@@ -148,7 +154,7 @@ namespace Agenda
             if (Page.IsValid)
             {
                 List<Contacto> contactos;
-                using (Business business = new Business())
+                using (Business business = new Business(this.ServerUrl, this.DBName))
                 {
                     ContactoFilter filtros = new ContactoFilter();
                     filtros.ApellidoNombre = TxtApellidoNombre.Text;
@@ -199,7 +205,7 @@ namespace Agenda
             GridViewRow row = (GridViewRow)button.DataItemContainer;
             int contactoId = Int32.Parse(row.Cells[0].Text);
 
-            using (Business business = new Business())
+            using (Business business = new Business(this.ServerUrl, this.DBName))
             {
                 business.DeleteContactoByIdSQL(contactoId);
             }
@@ -212,7 +218,7 @@ namespace Agenda
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
             int contactoId = Int32.Parse(row.Cells[0].Text);
 
-            using (Business business = new Business())
+            using (Business business = new Business(this.ServerUrl, this.DBName))
             {
                 business.CambiarEstadoContactoByIdSQL(contactoId);
             }
@@ -226,7 +232,7 @@ namespace Agenda
             int Id = Int32.Parse(row.Cells[0].Text);
             Contacto contactoZoom;
 
-            using (Business business = new Business())
+            using (Business business = new Business(this.ServerUrl, this.DBName))
             {
                 contactoZoom = business.getContactoByIdSQL(Id);
             }
@@ -242,7 +248,7 @@ namespace Agenda
             int Id = Int32.Parse(row.Cells[0].Text);
             Contacto contactoEdit;
 
-            using (Business business = new Business())
+            using (Business business = new Business(this.ServerUrl, this.DBName))
             {
                 contactoEdit = business.getContactoByIdSQL(Id);
             }

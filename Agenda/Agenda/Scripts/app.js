@@ -2,19 +2,19 @@
     const contactoInterno = document.getElementById("MainContent_DDContactoInt");
     const organizacion = document.getElementById("MainContent_TxtOrganizacion");
     const area = document.getElementById("MainContent_DDArea");
-
-
-    if (contactoInterno.options[contactoInterno.selectedIndex].text == "SI") {
-        organizacion.disabled = true
-        organizacion.value = "";
-        area.disabled = false;
-    } else if (contactoInterno.options[contactoInterno.selectedIndex].text == "NO") {
-        organizacion.disabled = false;
-        area.disabled = true;
-    } else {
-        organizacion.disabled = true;
-        area.disabled = true;
-    };
+    if (organizacion.attributes.class == undefined && area.attributes.class == undefined) {
+        if (contactoInterno.options[contactoInterno.selectedIndex].text == "SI") {
+            organizacion.disabled = true
+            organizacion.value = "";
+            area.disabled = false;
+        } else if (contactoInterno.options[contactoInterno.selectedIndex].text == "NO") {
+            organizacion.disabled = false;
+            area.disabled = true;
+        } else {
+            organizacion.disabled = true;
+            area.disabled = true;
+        };
+    }
 
     contactoInterno.onchange = e => {
         if (contactoInterno.options[contactoInterno.selectedIndex].text == "SI") {
@@ -28,7 +28,8 @@
             organizacion.disabled = true;
             area.disabled = true;
         };
-    }    
+    };
+    
 }
 
 LimpiarCampos = () => {

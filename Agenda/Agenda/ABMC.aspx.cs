@@ -7,11 +7,15 @@ using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using System.Text.RegularExpressions;
 using Agenda.BLL;
+using System.Configuration;
 
 namespace Agenda
 {
     public partial class ABMC : System.Web.UI.Page
     {
+        string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();
+        string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
+
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,18 +60,21 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            using (Business business = new Business())
+            if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
             {
-                List<string> paises = business.getPaisesSQL();
-                List<string> areas = business.getAreasSQL();
+                using (Business business = new Business(this.ServerUrl, this.DBName))
+                {
+                    List<string> paises = business.getPaisesSQL();
+                    List<string> areas = business.getAreasSQL();
 
-                foreach (string pais in paises)
-                {
-                    DDPais.Items.Add(new ListItem { Text = pais });
-                }
-                foreach (string area in areas)
-                {
-                    DDArea.Items.Add(new ListItem { Text = area });
+                    foreach (string pais in paises)
+                    {
+                        DDPais.Items.Add(new ListItem { Text = pais });
+                    }
+                    foreach (string area in areas)
+                    {
+                        DDArea.Items.Add(new ListItem { Text = area });
+                    }
                 }
             }
 
@@ -132,7 +139,7 @@ namespace Agenda
                 switch (Session["Accion"])
                 {
                     case "Edit":
-                        using (Business business = new Business())
+                        using (Business business = new Business(this.ServerUrl, this.DBName))
                         {
                             business.EditContactoSQL(this.contacto);
                         }
@@ -141,7 +148,7 @@ namespace Agenda
                     case "NuevoContacto":
                         contacto.Id = 0;
                         contacto.FechaIngreso = DateTime.Now;
-                        using (Business business = new Business())
+                        using (Business business = new Business(this.ServerUrl, this.DBName))
                         {
                             business.AgregarContactoSQL(this.contacto);
                         };

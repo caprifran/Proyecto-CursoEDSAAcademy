@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Utils
 {
     public class Configuration
     {
-        private const string Server = "localhost\\SQLEXPRESS";
-        private const string DBName = "Agenda";
-        public static string GetConnectionString()
+        
+        public static string GetConnectionString(string Server, string DBName)
         {
+            //string Server = ConfigurationManager.AppSettings["Server"].ToString();  //"localhost\\SQLEXPRESS";
+            //string DBName = ConfigurationManager.AppSettings["DBName"].ToString();  //"Agenda";
+
             return string.Concat(
                 "Data Source=",
                 Server,
