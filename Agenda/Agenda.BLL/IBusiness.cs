@@ -9,6 +9,8 @@ namespace Agenda.BLL
 {
     public interface IBusiness
     {
+        List<string> getPaisesSQL();
+        List<string> getAreasSQL();
         List<Contacto> GetContactosByFilterSQL(ContactoFilter contactoFilter);
         Contacto getContactoByIdSQL(int Id);
         void DeleteContactoByIdSQL(int Id);

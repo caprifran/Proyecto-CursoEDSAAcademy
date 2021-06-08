@@ -10,10 +10,6 @@
             <asp:Label runat="server" for="DDPais">Pais</asp:Label>
             <asp:DropDownList ID="DDPais" runat="server">
                 <asp:ListItem Text="TODOS"></asp:ListItem>
-                <asp:ListItem Text="Argentina"></asp:ListItem>
-                <asp:ListItem Text="Brasil"></asp:ListItem>
-                <asp:ListItem Text="Chile"></asp:ListItem>
-                <asp:ListItem Text="Uruguay"></asp:ListItem>
             </asp:DropDownList>
         </div>
         <div class="form-group">
@@ -44,10 +40,6 @@
             <asp:Label runat="server" for="DDArea">Area</asp:Label>
             <asp:DropDownList ID="DDArea" runat="server">
                 <asp:ListItem Text="TODOS"></asp:ListItem>
-                <asp:ListItem Text="Marketing"></asp:ListItem>
-                <asp:ListItem Text="Finanzas"></asp:ListItem>
-                <asp:ListItem Text="RRHH"></asp:ListItem>
-                <asp:ListItem Text="Operaciones"></asp:ListItem>
             </asp:DropDownList>
         </div>
         <div class="form-group">

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
+using Agenda.Entity;
 using Agenda.BLL;
 namespace Agenda
 {
@@ -50,6 +51,20 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
+            using (Business business = new Business())
+            {
+                List<string> paises = business.getPaisesSQL();
+                List<string> areas = business.getAreasSQL();
+
+                foreach (string pais in paises)
+                {
+                    DDPais.Items.Add(new ListItem { Text = pais });
+                }
+                foreach (string area in areas)
+                {
+                    DDArea.Items.Add(new ListItem { Text = area });
+                }
+            }
             if (IsPostBack)
             {
                 GridViewConsulta.DataSource = null;

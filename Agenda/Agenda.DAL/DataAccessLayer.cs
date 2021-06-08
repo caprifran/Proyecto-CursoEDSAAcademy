@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Agenda.Entity.Contacto;
+using Agenda.Entity;
 using Utils;
 namespace Agenda.DAL
 {
@@ -215,6 +216,46 @@ namespace Agenda.DAL
             });
 
             cmd.ExecuteNonQuery();
+        }
+        public DataSet GetPaises(SqlConnection connection)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                Connection = connection,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "ConsultaPaises"
+            };
+
+            SqlDataAdapter adapter = new SqlDataAdapter
+            {
+                SelectCommand = cmd
+            };
+
+            DataSet paises = new DataSet();
+
+            adapter.Fill(paises);
+
+            return paises;
+        }
+        public DataSet GetAreas(SqlConnection connection)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                Connection = connection,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "ConsultaAreas"
+            };
+
+            SqlDataAdapter adapter = new SqlDataAdapter
+            {
+                SelectCommand = cmd
+            };
+
+            DataSet areas = new DataSet();
+
+            adapter.Fill(areas);
+
+            return areas;
         }
         public void Dispose()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Agenda.Entity;
 using Agenda.Entity.Contacto;
 using Agenda.DAL;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Agenda.BLL
 {
-    public class Business: IBusiness, IDisposable
+    public class Business : IBusiness, IDisposable
     {
         public void AbrirConexion()
         {
@@ -33,9 +34,9 @@ namespace Agenda.BLL
                 using (DataAccessLayer dal = new DataAccessLayer())
                 {
                     var connection = dal.AbrirConexion();
-                    
+
                     DataSet contactosSql = dal.GetContactosByFilter(connection, contactoFilter);
-                    List<Contacto> result = new List<Contacto>();             
+                    List<Contacto> result = new List<Contacto>();
                     foreach (DataRow row in contactosSql.Tables[0].Rows)
                     {
                         result.Add(new Contacto
@@ -57,7 +58,7 @@ namespace Agenda.BLL
                             FechaIngreso = DateTime.Parse(row.ItemArray[14].ToString())
                         });
                     }
-                    
+
 
                     return result;
                 }
@@ -161,6 +162,53 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+            }
+        }
+        public List<string> getPaisesSQL(){
+            try
+            {
+                using (DataAccessLayer dal = new DataAccessLayer())
+                {
+                    var connection = dal.AbrirConexion();
+
+                    DataSet paisesSql = dal.GetPaises(connection);
+
+                    List<string> result = new List<string>();
+                    foreach (DataRow row in paisesSql.Tables[0].Rows)
+                    {
+                        result.Add(row.ItemArray[0].ToString());
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public List<string> getAreasSQL()
+        {
+            try
+            {
+                using (DataAccessLayer dal = new DataAccessLayer())
+                {
+                    var connection = dal.AbrirConexion();
+
+                    DataSet areasSql = dal.GetAreas(connection);
+
+                    List<string> result = new List<string>();
+                    foreach (DataRow row in areasSql.Tables[0].Rows)
+                    {
+                        result.Add(row.ItemArray[0].ToString());
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
         public void Dispose()
