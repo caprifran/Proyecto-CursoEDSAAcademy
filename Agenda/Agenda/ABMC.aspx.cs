@@ -56,6 +56,21 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
+            using (Business business = new Business())
+            {
+                List<string> paises = business.getPaisesSQL();
+                List<string> areas = business.getAreasSQL();
+
+                foreach (string pais in paises)
+                {
+                    DDPais.Items.Add(new ListItem { Text = pais });
+                }
+                foreach (string area in areas)
+                {
+                    DDArea.Items.Add(new ListItem { Text = area });
+                }
+            }
+
             if (Session["contacto"] != null)
             {
                 // Relleno lo campos si les corresponde 
