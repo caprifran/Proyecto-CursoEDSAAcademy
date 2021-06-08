@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
-using Agenda.Entity;
 using Agenda.BLL;
 namespace Agenda
 {

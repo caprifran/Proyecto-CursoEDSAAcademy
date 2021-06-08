@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Agenda.Entity.Contacto;
-using Agenda.Entity;
 using Utils;
 namespace Agenda.DAL
 {

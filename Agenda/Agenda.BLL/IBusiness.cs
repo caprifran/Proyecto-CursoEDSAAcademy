@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Agenda.Entity.Contacto;
-using Agenda.Entity;
 namespace Agenda.BLL
 {
     public interface IBusiness
