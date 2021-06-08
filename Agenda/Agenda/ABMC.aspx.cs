@@ -12,18 +12,15 @@ namespace Agenda
 {
     public partial class ABMC : System.Web.UI.Page
     {
-        Business business;
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
         {
-            business = new Business();
-            business.contactos = (List<Contacto>)Application["contactosEjemplo"];
-
-            if (Cache["Accion"] != null || Cache["contacto"] != null)
+           if (Session["Accion"] != null || Session["contacto"] != null)
             {
-                switch (Cache["Accion"])
+                switch (Session["Accion"])
                 {
                     case "Zoom":
+                        // Defino el titulo de la pagina, desactivo todo los campos, escondo el boton de submit e inicializo contacto con los valores recibidos por de AgendaIndex
                         tituloAccion.InnerText = "Consultar Contacto";
                         TxtApellidoNombre.Enabled = false;
                         DDGenero.Enabled = false;
@@ -39,12 +36,13 @@ namespace Agenda
                         TxtEmail.Enabled = false;
                         TxtCuentaSkype.Enabled = false;
                         BtnGuardar.Visible = false;
-                        this.contacto = (Contacto)Cache["contacto"];
+                        this.contacto = (Contacto)Session["contacto"];
                         break;
 
                     case "Edit":
+                        // Defino el titulo e inicializo contacto con los valores recibidos por de AgendaIndex
                         tituloAccion.InnerText = "Editar Contacto";
-                        this.contacto = (Contacto)Cache["contacto"];
+                        this.contacto = (Contacto)Session["contacto"];
                         break;
 
                     case "NuevoContacto":
@@ -58,8 +56,9 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            if (Cache["contacto"] != null)
+            if (Session["contacto"] != null)
             {
+                // Relleno lo campos si les corresponde 
                 TxtApellidoNombre.Text = this.contacto.ApellidoNombre;
                 DDGenero.SelectedValue = this.contacto.Genero;
                 DDPais.SelectedValue = this.contacto.Pais;
@@ -95,7 +94,7 @@ namespace Agenda
                RequiredFieldValidatorContInt.IsValid &&
                RequiredFieldValidatorActivo.IsValid &&
                RequiredFieldValidatorEmail.IsValid))
-                    Cache["msjError"] += "- Datos invalidos, revise de haber completado los campos obligatorios, señalizados con el simbolo *" + "\r\n"; 
+                    Session["msjError"] += "- Datos invalidos, revise de haber completado los campos obligatorios, señalizados con el simbolo *" + "\r\n"; 
 
             if (IsValid)
             {
@@ -115,16 +114,22 @@ namespace Agenda
                 this.contacto.Email = TxtEmail.Text;
                 this.contacto.Skype = TxtCuentaSkype.Text;
                 
-                switch (Cache["Accion"])
+                switch (Session["Accion"])
                 {
                     case "Edit":
-                        this.business.EditarContacto(this.contacto);
+                        using (Business business = new Business())
+                        {
+                            business.EditContactoSQL(this.contacto);
+                        }
                         break;
 
                     case "NuevoContacto":
-                        contacto.Id = ((List<Contacto>)Application["contactosEjemplo"]).Count;
+                        contacto.Id = 0;
                         contacto.FechaIngreso = DateTime.Now;
-                        this.business.AgregarContacto(this.contacto);
+                        using (Business business = new Business())
+                        {
+                            business.AgregarContactoSQL(this.contacto);
+                        };
                         break;
                 }
 
@@ -132,8 +137,8 @@ namespace Agenda
             }
             else
             {
-                ImprimirAviso((string)Cache["msjError"]);
-                Cache["msjError"] = "";
+                ImprimirAviso((string)Session["msjError"]);
+                Session["msjError"] = "";
             }
             
         }
@@ -153,7 +158,7 @@ namespace Agenda
             }
             else
             {
-               Cache["msjError"] += "- Formato de Email invalido, debe ser por ejemplo example@example.com" + "\r\n";
+               Session["msjError"] += "- Formato de Email invalido, debe ser por ejemplo example@example.com" + "\r\n";
             }
         }
         protected void ValidacionSkypeTel(object sender, ServerValidateEventArgs args)
@@ -166,7 +171,7 @@ namespace Agenda
             }
             else
             {
-                Cache["msjError"] += "- Por lo menos uno de los campos para poder contactarse debe estar rellenado. (Cuenta Skype, Tel. Fijo y Tel. Celular)" + "\r\n";
+                Session["msjError"] += "- Por lo menos uno de los campos para poder contactarse debe estar rellenado. (Cuenta Skype, Tel. Fijo y Tel. Celular)" + "\r\n";
             }
         }
     }

@@ -13,9 +13,6 @@ namespace Agenda
         private Business business;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.business = new Business();
-            business.contactos = (List<Contacto>)Application["contactosEjemplo"];
-
             if (IsPostBack) {
                 List<Button> btnsPaginas = new List<Button>();
 
@@ -58,9 +55,9 @@ namespace Agenda
                 GridViewConsulta.DataSource = null;
                 GridViewConsulta.DataBind();
 
-                if ((List<Contacto>)Session["contactosEjemploFiltrados"] != null)
+                if ((List<Contacto>)Session["contactosFiltrados"] != null)
                 {
-                    List<Contacto> contactos = (List<Contacto>)Session["contactosEjemploFiltrados"];
+                    List<Contacto> contactos = (List<Contacto>)Session["contactosFiltrados"];
                     List<Contacto> gridData = new List<Contacto>();
                     int indexPContacto = ((int)Application["nroPagina"] - 1) * 5;
                     int indexLContacto = contactos.Count() - indexPContacto;
@@ -80,7 +77,7 @@ namespace Agenda
 
                         foreach (GridViewRow row in GridViewConsulta.Rows)
                         {
-                            ImageButton activarDesactivarContacto = ((ImageButton)row.FindControl("ActivarDesactivarContacto"));//Cells[18].Controls[0]);
+                            ImageButton activarDesactivarContacto = ((ImageButton)row.FindControl("ActivarDesactivarContacto"));
 
                             if (row.Cells[9].Text == "True")
                                 activarDesactivarContacto.ImageUrl = "Images/anular.png";
@@ -137,18 +134,6 @@ namespace Agenda
             if (Page.IsValid)
             {
                 List<Contacto> contactos;
-                
-                /*
-                                filtros.ApellidoNombre = TxtApellidoNombre.Text;
-                                filtros.Pais = DDPais.SelectedValue;
-                                filtros.Localidad = TxtLocalidad.Text;
-                                filtros.FechaIngresoD = TxtFechaIngresoD.Text;
-                                filtros.FechaIngresoH = TxtFechaIngresoH.Text;
-                                filtros.ContactoInterno = DDContactoInt.SelectedValue;
-                                filtros.Organizacion = TxtOrganizacion.Text;
-                                filtros.Area = DDArea.SelectedValue;
-                                filtros.Activo = DDActivo.SelectedValue;*/
-
                 using (Business business = new Business())
                 {
                     ContactoFilter filtros = new ContactoFilter();
@@ -157,16 +142,15 @@ namespace Agenda
                     filtros.Localidad = TxtLocalidad.Text;
                     filtros.FechaIngresoD = TxtFechaIngresoD.Text;
                     filtros.FechaIngresoH = TxtFechaIngresoH.Text;
-                    filtros.ContactoInterno = DDContactoInt.SelectedValue == "True"? 1 : 2;
+                    filtros.ContactoInterno = DDContactoInt.SelectedValue;
                     filtros.Organizacion = TxtOrganizacion.Text;
                     filtros.Area = DDArea.SelectedValue;
-                    filtros.Activo = DDActivo.SelectedValue == "True"? 1 : 2;
+                    filtros.Activo = DDActivo.SelectedValue;
 
-                    //contactos = business.getContactosByFilterSQL(filtros);
+                    contactos = business.GetContactosByFilterSQL(filtros);
                 }
-                //contactos = business.GetContactosByFilter(filtros);
-                //Session["contactosEjemploFiltrados"] = contactos;
-                //Application["cantPaginas"] = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactos.Count / 5));
+                Session["contactosFiltrados"] = contactos;
+                Application["cantPaginas"] = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactos.Count / 5));
                 Application["nroPagina"] = 1;
             }
             else
@@ -199,8 +183,12 @@ namespace Agenda
         {
             ImageButton button = (ImageButton)sender;
             GridViewRow row = (GridViewRow)button.DataItemContainer;
-            Contacto contactoDelete = this.business.GetContactoByID(Int32.Parse(row.Cells[0].Text));
-            this.business.DeleteContacto(contactoDelete);;
+            int contactoId = Int32.Parse(row.Cells[0].Text);
+
+            using (Business business = new Business())
+            {
+                business.DeleteContactoByIdSQL(contactoId);
+            }
 
             Response.Redirect("AgendaIndex.aspx");
         }
@@ -208,8 +196,12 @@ namespace Agenda
         {
             ImageButton boton = (ImageButton)sender;
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
-            Contacto contacto = this.business.GetContactoByID(Int32.Parse(row.Cells[0].Text));
-            this.business.CambiarEstadoContacto(contacto);
+            int contactoId = Int32.Parse(row.Cells[0].Text);
+
+            using (Business business = new Business())
+            {
+                business.CambiarEstadoContactoByIdSQL(contactoId);
+            }
 
             Response.Redirect("AgendaIndex.aspx");
         }
@@ -217,62 +209,38 @@ namespace Agenda
         {
             ImageButton boton = (ImageButton)sender;
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
+            int Id = Int32.Parse(row.Cells[0].Text);
+            Contacto contactoZoom;
 
-            Contacto contactoZoom = new Contacto
+            using (Business business = new Business())
             {
-                Id = Int32.Parse(row.Cells[0].Text),
-                ApellidoNombre = row.Cells[1].Text,
-                Genero = row.Cells[2].Text,
-                Pais = row.Cells[3].Text,
-                Localidad = row.Cells[4].Text,
-                ContactoInterno = Boolean.Parse(row.Cells[5].Text),
-                Organizacion = row.Cells[6].Text,
-                Area = row.Cells[7].Text,
-                FechaIngreso = DateTime.Parse(row.Cells[8].Text),
-                Activo = Boolean.Parse(row.Cells[9].Text),
-                Direccion = row.Cells[10].Text,
-                TelFijo = row.Cells[11].Text,
-                TelCel = row.Cells[12].Text,
-                Email = row.Cells[13].Text,
-                Skype = row.Cells[14].Text
-            };
+                contactoZoom = business.getContactoByIdSQL(Id);
+            }
 
-            Cache["contacto"] = contactoZoom;
-            Cache["Accion"] = "Zoom";
+            Session["contacto"] = contactoZoom;
+            Session["Accion"] = "Zoom";
             Response.Redirect("ABMC.aspx");
         }
         protected void EditContacto_Click(object sender, EventArgs e)
         {
             ImageButton boton = (ImageButton)sender;
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
+            int Id = Int32.Parse(row.Cells[0].Text);
+            Contacto contactoEdit;
 
-            Contacto contactoEdit = new Contacto
+            using (Business business = new Business())
             {
-                Id = Int32.Parse(row.Cells[0].Text),
-                ApellidoNombre = row.Cells[1].Text,
-                Genero = row.Cells[2].Text,
-                Pais = row.Cells[3].Text,
-                Localidad = row.Cells[4].Text,
-                ContactoInterno = Boolean.Parse(row.Cells[5].Text),
-                Organizacion = row.Cells[6].Text,
-                Area = row.Cells[7].Text,
-                FechaIngreso = DateTime.Parse(row.Cells[8].Text),
-                Activo = Boolean.Parse(row.Cells[9].Text),
-                Direccion = row.Cells[10].Text,
-                TelFijo = row.Cells[11].Text,
-                TelCel = row.Cells[12].Text,
-                Email = row.Cells[13].Text,
-                Skype = row.Cells[14].Text
-            };
+                contactoEdit = business.getContactoByIdSQL(Id);
+            }
 
-            Cache["contacto"] = contactoEdit;
-            Cache["Accion"] = "Edit";
+            Session["contacto"] = contactoEdit;
+            Session["Accion"] = "Edit";
             Response.Redirect("ABMC.aspx");
         }
 
         protected void BtnNuevoContacto_Click(object sender, EventArgs e)
         {
-            Cache["Accion"] = "NuevoContacto";
+            Session["Accion"] = "NuevoContacto";
             Response.Redirect("ABMC.aspx");
         }
     }

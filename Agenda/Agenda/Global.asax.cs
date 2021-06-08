@@ -19,17 +19,18 @@ namespace Agenda
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            List<Contacto> contactosEjemplo = new List<Contacto>();
+            //List<Contacto> contactosEjemplo = new List<Contacto>();
 
             //ConectarseBD();
-            contactosEjemplo = getContactosByFilter();
+            //contactosEjemplo = getContactosByFilter();
             //getContactoById();
-            
-            
 
-            int idContacto = 0;
             int cantPaginas = 0;
             int nroPagina = 1;
+
+
+            /*int idContacto = 0;
+            
 
             contactosEjemplo.Add(
                 new Contacto
@@ -190,52 +191,16 @@ namespace Agenda
                     Email = "example8@gmail.com",
                     Skype = "example8"
                 }
-            );
+            );*/
 
-            contactosEjemplo = contactosEjemplo.OrderBy(contacto => contacto.ApellidoNombre).ToList();
+            /*contactosEjemplo = contactosEjemplo.OrderBy(contacto => contacto.ApellidoNombre).ToList();
             cantPaginas = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactosEjemplo.Count / 5));
 
             Application["contactosEjemplo"] = contactosEjemplo;
-            Application["contactosEjemploFiltrados"] = contactosEjemplo;
+            Application["contactosEjemploFiltrados"] = contactosEjemplo;*/
             Application["cantPaginas"] = cantPaginas;
             Application["nroPagina"] = nroPagina;
 
-        }
-        
-        private static void ConectarseBD()
-        {
-            using (Business business = new Business())
-            {
-                business.AbrirConexion();
-            }
-        }
-        private static List<Contacto> getContactosByFilter()
-        {
-            using (Business business = new Business())
-            {
-                ContactoFilter filter = new ContactoFilter
-                {
-                    ApellidoNombre = "'ca'",
-                    Pais = "'Argentina'",
-                    Localidad = "'Rio'",
-                    FechaIngresoD = "'01/01/2021'",
-                    FechaIngresoH = "'01/12/2021'",
-                    ContactoInterno = 1,
-                    Organizacion = "'EDSA'",
-                    Area = "'Operaciones'",
-                    Activo = 1
-                };
-
-                List<Contacto> result = business.GetContactosByFilterSql(filter);
-                return result;
-            }
-        }
-        private static void getContactoById()
-        {
-            using (Business business = new Business())
-            {
-                business.getContactoByIdSQL(1);
-            }
         }
     }
 }

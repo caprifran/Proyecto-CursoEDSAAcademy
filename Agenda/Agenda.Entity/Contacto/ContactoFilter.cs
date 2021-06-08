@@ -13,10 +13,10 @@ namespace Agenda.Entity.Contacto
         public string Localidad { get; set; }
         public string FechaIngresoD { get; set; }
         public string FechaIngresoH { get; set; }
-        public int ContactoInterno { get; set; }
+        public string ContactoInterno { get; set; }
         public string Organizacion { get; set; }
         public string Area { get; set; }
-        public int Activo { get; set; }
+        public string Activo { get; set; }
 
     }
 }

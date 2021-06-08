@@ -1,4 +1,4 @@
-﻿window.onload = function () {
+﻿window.onload = () => {
     const contactoInterno = document.getElementById("MainContent_DDContactoInt");
     const organizacion = document.getElementById("MainContent_TxtOrganizacion");
     const area = document.getElementById("MainContent_DDArea");

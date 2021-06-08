@@ -9,3 +9,4 @@ C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Utils\obj\Debug\Utils.csproj.AssemblyReference.cache

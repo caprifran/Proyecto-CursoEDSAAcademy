@@ -9,15 +9,12 @@ namespace Agenda.BLL
 {
     public interface IBusiness
     {
-        Contacto GetContactoByID(int Id);
-        List<Contacto> GetContactosByFilter(ContactoFilter contactoFilter);
-        List<Contacto> GetContactosByFilterSql(ContactoFilter contactoFilter);
+        List<Contacto> GetContactosByFilterSQL(ContactoFilter contactoFilter);
         Contacto getContactoByIdSQL(int Id);
-        int getCantPaginas(int cantContacos);
-        void DeleteContacto(Contacto contacto);
-        void CambiarEstadoContacto(Contacto contacto);
-        void AgregarContacto(Contacto contacto);
-        void EditarContacto(Contacto contacto);
+        void DeleteContactoByIdSQL(int Id);
+        void CambiarEstadoContactoByIdSQL(int Id);
+        void AgregarContactoSQL(Contacto contacto);
+        void EditContactoSQL(Contacto contacto);
         void AbrirConexion();
     }
 }
