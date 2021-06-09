@@ -66,8 +66,7 @@ namespace Agenda.BLL
                         });
                     }
 
-
-                    return result;
+                    return result.OrderBy(c => c.ApellidoNombre).ToList();
                 }
             }
             catch (Exception e)

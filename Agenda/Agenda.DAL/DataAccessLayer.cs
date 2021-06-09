@@ -150,7 +150,11 @@ namespace Agenda.DAL
             string[] ApellidoNombres = contacto.ApellidoNombre.Split(' ');
             string apellido = ApellidoNombres[0];
             string nombres = "";
+            object Area, Pais;
+
             for (int i = 1; i < ApellidoNombres.Length; i++) nombres += ApellidoNombres[i];
+            if (string.IsNullOrEmpty(contacto.Area)) Area = DBNull.Value; else Area = contacto.Area;
+            if (string.IsNullOrEmpty(contacto.Pais)) Pais = DBNull.Value; else Pais = contacto.Pais;
 
             SqlCommand cmd = new SqlCommand
             {
@@ -165,18 +169,17 @@ namespace Agenda.DAL
                 new SqlParameter() { ParameterName = "@Nombre", Value = nombres, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@Apellido", Value = apellido, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@Genero", Value = contacto.Genero, SqlDbType = SqlDbType.VarChar},
-                new SqlParameter() { ParameterName = "@Pais", Value = contacto.Pais, SqlDbType = SqlDbType.VarChar},
+                new SqlParameter() { ParameterName = "@Pais", Value = Pais, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@Localidad", Value = contacto.Localidad, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@ContactoInterno", Value = contacto.ContactoInterno, SqlDbType = SqlDbType.Bit},
                 new SqlParameter() { ParameterName = "@Organizacion", Value = contacto.Organizacion, SqlDbType = SqlDbType.VarChar},
-                new SqlParameter() { ParameterName = "@Area", Value = contacto.Area, SqlDbType = SqlDbType.VarChar},
+                new SqlParameter() { ParameterName = "@Area", Value = Area, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@Activo", Value = contacto.Activo, SqlDbType = SqlDbType.Bit},
                 new SqlParameter() { ParameterName = "@Direccion", Value = contacto.Direccion, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@TelFijo", Value = contacto.TelFijo, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@TelCel", Value = contacto.TelCel, SqlDbType = SqlDbType.VarChar},
                 new SqlParameter() { ParameterName = "@Email", Value = contacto.Email, SqlDbType = SqlDbType.VarChar},
-                new SqlParameter() { ParameterName = "@Skype", Value = contacto.Skype, SqlDbType = SqlDbType.VarChar},
-                new SqlParameter() { ParameterName = "@FechaIngreso", Value = contacto.FechaIngreso.ToString("dd/MM/yyyy"), SqlDbType = SqlDbType.VarChar}
+                new SqlParameter() { ParameterName = "@Skype", Value = contacto.Skype, SqlDbType = SqlDbType.VarChar}
             });
 
             cmd.ExecuteNonQuery();

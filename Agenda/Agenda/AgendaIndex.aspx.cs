@@ -7,15 +7,17 @@ using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using Agenda.BLL;
 using System.Configuration;
+using Agenda.WebServiceAreasContactos;
 namespace Agenda
 {
     public partial class AgendaIndex : System.Web.UI.Page
     {
         private string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();  
         private string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
+        private AreasSoapClient WSAreasContactos = new AreasSoapClient();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack) {
+            if (IsPostBack && Session["contactosFiltrados"] != null) {
                 List<Button> btnsPaginas = new List<Button>();
 
                 Button btnAnterior = new Button();
@@ -43,35 +45,31 @@ namespace Agenda
                 btnSiguiente.Click += new EventHandler(this.BtnSiguiente_Click);
                 contenedorBtnsPaginas.Controls.Add(btnSiguiente);
 
-            }
-            else
-            {
-                TxtFechaIngresoD.Text = DateTime.Now.AddDays(-30).ToString("dd/MM/yyyy");
-                TxtFechaIngresoH.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            }
+            }            
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-
-            if(DDPais.Items.Count == 1 && DDArea.Items.Count == 1) {
-                using (Business business = new Business(this.ServerUrl, this.DBName))
+            if (IsPostBack)
+            {
+                // Cargo Areas desde el webService y los paises desde la BD
+                // Previamente verifico que lo haga solamente si no fueron cargados antes
+                if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
                 {
-                    List<string> paises = business.getPaisesSQL();
-                    List<string> areas = business.getAreasSQL();
-
-                    foreach (string pais in paises)
-                    {
-                        DDPais.Items.Add(new ListItem { Text = pais });
-                    }
+                    List<string> areas = WSAreasContactos.getAreas().ToList();
                     foreach (string area in areas)
                     {
                         DDArea.Items.Add(new ListItem { Text = area });
                     }
+                    using (Business business = new Business(this.ServerUrl, this.DBName))
+                    {
+                        List<string> paises = business.getPaisesSQL();
+                        foreach (string pais in paises)
+                        {
+                            DDPais.Items.Add(new ListItem { Text = pais });
+                        }
+                    }
                 }
-            }
-            
-            if (IsPostBack)
-            {
+
                 GridViewConsulta.DataSource = null;
                 GridViewConsulta.DataBind();
 
@@ -107,9 +105,15 @@ namespace Agenda
                     }
                     else
                     {
+                        Session["contactosFiltrados"] = null;
                         ImprimirAviso("No se han encontrado Contactos, intentelo de nuevo.");
                     }
                 }                
+            }
+            else
+            {
+                TxtFechaIngresoD.Text = DateTime.Now.AddDays(-30).ToString("dd/MM/yyyy");
+                TxtFechaIngresoH.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
         protected void FechaIngresoD_Text_Changed(object sender, EventArgs e)

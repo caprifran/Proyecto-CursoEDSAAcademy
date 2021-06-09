@@ -124,11 +124,11 @@ namespace Agenda
                 this.contacto.Genero = DDGenero.SelectedValue;
                 this.contacto.Pais = DDPais.SelectedValue;
                 this.contacto.Localidad = TxtLocalidad.Text;
-                if (DDContactoInt.SelectedValue == "Si") this.contacto.ContactoInterno = true;
+                if (DDContactoInt.SelectedValue == "SI") this.contacto.ContactoInterno = true;
                 else this.contacto.ContactoInterno = false;
                 this.contacto.Organizacion = TxtOrganizacion.Text;
                 this.contacto.Area = DDArea.SelectedValue;
-                if (DDActivo.SelectedValue == "Si") this.contacto.Activo = true;
+                if (DDActivo.SelectedValue == "SI") this.contacto.Activo = true;
                 else this.contacto.Activo = false;
                 this.contacto.Direccion = TxtDireccion.Text;
                 this.contacto.TelFijo = TxtTelFijo.Text;

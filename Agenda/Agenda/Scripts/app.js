@@ -23,8 +23,11 @@
             area.disabled = false;
         } else if (contactoInterno.options[contactoInterno.selectedIndex].text == "NO") {
             organizacion.disabled = false;
+            area.selectedIndex = 0;
             area.disabled = true;
         } else {
+            organizacion.value = "";
+            area.selectedIndex = 0;
             organizacion.disabled = true;
             area.disabled = true;
         };
