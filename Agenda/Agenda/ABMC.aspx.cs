@@ -15,7 +15,7 @@ namespace Agenda
     {
         string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();
         string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
-
+        private WSAreasChild WSAreasContactos = new WSAreasChild();
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,18 +62,18 @@ namespace Agenda
         {
             if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
             {
+
                 using (Business business = new Business(this.ServerUrl, this.DBName))
                 {
                     List<string> paises = business.getPaisesSQL();
-                    List<string> areas = business.getAreasSQL();
-
-                    foreach (string pais in paises)
-                    {
-                        DDPais.Items.Add(new ListItem { Text = pais });
-                    }
+                    List<string> areas = WSAreasContactos.getAreas().ToList();
                     foreach (string area in areas)
                     {
                         DDArea.Items.Add(new ListItem { Text = area });
+                    }
+                    foreach (string pais in paises)
+                    {
+                        DDPais.Items.Add(new ListItem { Text = pais });
                     }
                 }
             }

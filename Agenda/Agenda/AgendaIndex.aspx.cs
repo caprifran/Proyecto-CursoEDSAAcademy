@@ -7,14 +7,13 @@ using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using Agenda.BLL;
 using System.Configuration;
-using Agenda.WebServiceAreasContactos;
 namespace Agenda
 {
     public partial class AgendaIndex : System.Web.UI.Page
     {
         private string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();  
         private string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
-        private AreasSoapClient WSAreasContactos = new AreasSoapClient();
+        private WSAreasChild WSAreasContactos = new WSAreasChild();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack && Session["contactosFiltrados"] != null) {
@@ -49,27 +48,26 @@ namespace Agenda
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            if (IsPostBack)
+            // Cargo Areas desde el webService y los paises desde la BD
+            // Previamente verifico que lo haga solamente si no fueron cargados antes
+            if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
             {
-                // Cargo Areas desde el webService y los paises desde la BD
-                // Previamente verifico que lo haga solamente si no fueron cargados antes
-                if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
+                List<string> areas = WSAreasContactos.getAreas().ToList();
+                foreach (string area in areas)
                 {
-                    List<string> areas = WSAreasContactos.getAreas().ToList();
-                    foreach (string area in areas)
+                    DDArea.Items.Add(new ListItem { Text = area });
+                }
+                using (Business business = new Business(this.ServerUrl, this.DBName))
+                {
+                    List<string> paises = business.getPaisesSQL();
+                    foreach (string pais in paises)
                     {
-                        DDArea.Items.Add(new ListItem { Text = area });
-                    }
-                    using (Business business = new Business(this.ServerUrl, this.DBName))
-                    {
-                        List<string> paises = business.getPaisesSQL();
-                        foreach (string pais in paises)
-                        {
-                            DDPais.Items.Add(new ListItem { Text = pais });
-                        }
+                        DDPais.Items.Add(new ListItem { Text = pais });
                     }
                 }
-
+            }
+            if (IsPostBack)
+            {
                 GridViewConsulta.DataSource = null;
                 GridViewConsulta.DataBind();
 
