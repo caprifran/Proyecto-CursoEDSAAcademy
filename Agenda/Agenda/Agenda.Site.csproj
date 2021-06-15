@@ -110,6 +110,13 @@
     <Content Include="ABMC.aspx" />
     <Content Include="About.aspx" />
     <Content Include="AgendaIndex.aspx" />
+    <None Include="Connected Services\WSCUILGenerator\CUILGeneratorSVC.disco" />
+    <None Include="Connected Services\WSCUILGenerator\configuration91.svcinfo" />
+    <None Include="Connected Services\WSCUILGenerator\configuration.svcinfo" />
+    <None Include="Connected Services\WSCUILGenerator\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -127,6 +134,16 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Connected Services\WSCUILGenerator\CUILGeneratorSVC.wsdl" />
+    <None Include="Connected Services\WSCUILGenerator\CUILGeneratorSVC.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WSCUILGenerator\CUILGeneratorSVC1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WSCUILGenerator\CUILGeneratorSVC2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\anular.png" />
     <Content Include="Images\clearFilter.png" />
@@ -194,6 +211,11 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\WSCUILGenerator\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,6 +277,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WSCUILGenerator\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,7 +6,7 @@
         <div class="form-group">
             <asp:Label runat="server" for="TxtApellidoNombre">Apellido y Nombre</asp:Label>
             
-            <asp:TextBox ID="TxtApellidoNombre" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TxtApellidoNombre" runat="server" AutoPostBack="True" ontextchanged="GenerarCUIL"></asp:TextBox>
         </div>
         <asp:RequiredFieldValidator id="RequiredFieldValidatorApellidoNombre"
                     ControlToValidate="TxtApellidoNombre" ErrorMessage="*"
@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <asp:Label runat="server" for="DDGenero">Género</asp:Label>
-            <asp:DropDownList ID="DDGenero" runat="server">
+            <asp:DropDownList ID="DDGenero" runat="server" AutoPostBack="True" ontextchanged="GenerarCUIL">
                 <asp:ListItem Text=""></asp:ListItem>
                 <asp:ListItem Text="Masculino"></asp:ListItem>
                 <asp:ListItem Text="Femenino"></asp:ListItem>
@@ -113,6 +113,11 @@
         </div>
         <asp:CustomValidator ID="SkypeValidator" runat="server"
         ControlToValidate="TxtCuentaSkype" OnServerValidate="ValidacionSkypeTel" ValidateEmptyText="true" ValidationGroup="ValidacionGuardar"></asp:CustomValidator>
+
+        <div class="form-group">
+            <asp:Label runat="server" for="TxtCUIL">CUIL</asp:Label>
+            <asp:TextBox ID="TxtCUIL" runat="server" Enabled="false"></asp:TextBox>
+        </div>
 
         <div id="contenedorBtnsABMC">
             <asp:Button ID="BtnSalir" runat="server" Text="Volver" OnClick="BtnSalir_Click"/>

@@ -8,6 +8,8 @@ using Agenda.Entity.Contacto;
 using System.Text.RegularExpressions;
 using Agenda.BLL;
 using System.Configuration;
+using System.ServiceModel;
+using Agenda.WSCUILGenerator;
 
 namespace Agenda
 {
@@ -98,6 +100,10 @@ namespace Agenda
                 TxtTelCel.Text = this.contacto.TelCel;
                 TxtEmail.Text = this.contacto.Email;
                 TxtCuentaSkype.Text = this.contacto.Skype;
+
+                // Al no haber un evento onchange sino una carga de la pagina con los datos del contacto
+                // Obtengo el CUIL al momento de llenar los campos
+                GenerarCUIL(null, null); 
             }
         }
         protected void BtnSalir_Click(object sender, EventArgs e)
@@ -194,6 +200,28 @@ namespace Agenda
             else
             {
                 Session["msjError"] += "- Por lo menos uno de los campos para poder contactarse debe estar rellenado. (Cuenta Skype, Tel. Fijo y Tel. Celular)" + "\r\n";
+            }
+        }
+        protected void GenerarCUIL(object sender, EventArgs args)
+        {
+            if (!String.IsNullOrEmpty(TxtApellidoNombre.Text) && !String.IsNullOrEmpty(DDGenero.SelectedValue))
+            {
+                string apellido = TxtApellidoNombre.Text.Split(' ')[0];
+                string nombre = TxtApellidoNombre.Text.Split(' ')[1];
+                string genero = DDGenero.SelectedValue;
+
+                // Redefino los atributos para que al actualizar la pantalla contenga estos nuevos valores
+                this.contacto.ApellidoNombre = apellido + " " + nombre;
+                this.contacto.Genero = genero;
+
+                WSCUILGenerator.CUILGeneratorSVCClient CUIL = new WSCUILGenerator.CUILGeneratorSVCClient();
+                try
+                {
+                    TxtCUIL.Text = CUIL.GetCUIL(nombre, apellido, genero/*, 1, 0*/);
+                }
+                catch(FaultException<ExceptionFaultContract> ex)
+                {
+                }
             }
         }
     }

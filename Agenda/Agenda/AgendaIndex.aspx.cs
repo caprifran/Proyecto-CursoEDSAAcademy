@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using Agenda.Entity.Contacto;
 using Agenda.BLL;
 using System.Configuration;
+using System.ServiceModel;
+using Agenda.WSCUILGenerator;
+
 namespace Agenda
 {
     public partial class AgendaIndex : System.Web.UI.Page
@@ -95,10 +98,16 @@ namespace Agenda
                         {
                             ImageButton activarDesactivarContacto = ((ImageButton)row.FindControl("ActivarDesactivarContacto"));
 
-                            if (row.Cells[9].Text == "True")
-                                activarDesactivarContacto.ImageUrl = "Images/anular.png";
-                            else
-                                activarDesactivarContacto.ImageUrl = "images/play_pause.png";
+                            string apellido = row.Cells[1].Text.ToString().Split(' ')[0];
+                            string nombre = row.Cells[1].Text.ToString().Split(' ')[1];
+                            string genero = row.Cells[2].Text.ToString();
+                            //Genero el CUIL con el web service y lo guardo en una variable local
+                            string CUIL = GenerarCUIL(apellido, nombre, genero);
+
+                            // Si el CUIL esta definido correctamente lo voy a imprimir en la celda que le corresponde
+                            row.Cells[15].Text = !String.IsNullOrEmpty(CUIL) ?  CUIL : null;
+
+                            activarDesactivarContacto.ImageUrl = row.Cells[9].Text == "True" ? "Images/anular.png" : "images/play_pause.png";
                         }
                     }
                     else
@@ -264,6 +273,19 @@ namespace Agenda
         {
             Session["Accion"] = "NuevoContacto";
             Response.Redirect("ABMC.aspx");
+        }
+        protected string GenerarCUIL(string apellido, string nombre, string genero)
+        {
+            WSCUILGenerator.CUILGeneratorSVCClient CUIL = new WSCUILGenerator.CUILGeneratorSVCClient();
+            try
+            {
+                return CUIL.GetCUIL(nombre, apellido, genero/*, 1, 0*/);
+            }
+            catch (FaultException<ExceptionFaultContract> ex)
+            {
+                return null;
+            }
+        
         }
     }
 }

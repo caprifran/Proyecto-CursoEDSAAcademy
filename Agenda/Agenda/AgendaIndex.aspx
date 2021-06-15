@@ -82,7 +82,11 @@
                 <asp:BoundField DataField="TelCel" HeaderText="Tel Cel" ReadOnly="True"/>
                 <asp:BoundField DataField="Email" HeaderText="E-mail" ReadOnly="True"/>
                 <asp:BoundField DataField="Skype" HeaderText="Skype" ReadOnly="True"/>
-
+                <asp:TemplateField HeaderText="Nro. CUIL">
+                    <ItemTemplate>
+                        <asp:Label ID="CUILContacto" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
                         <asp:ImageButton ID="ZoomContacto" CommandName="Zoom" runat="server" ImageUrl="./Images/zoom.png" OnClick="ZoomContacto_Click"></asp:ImageButton>
