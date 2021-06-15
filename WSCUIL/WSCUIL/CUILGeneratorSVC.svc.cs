@@ -80,7 +80,6 @@ namespace WSCUIL
                         identificador = auxIdentificador.ToString();
                     }
                 }
-
                 resultado = tipo + '-' + DNI + '-' + identificador;
                 return resultado;
             }

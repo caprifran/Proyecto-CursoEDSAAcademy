@@ -6,6 +6,7 @@ C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\A
 C:\Users\franc\Downloads\Cursos y Certificaciones\Curso ASP.Net - EDSA Academy\Agenda\Agenda.Entity\obj\Debug\Agenda.Entity.pdb
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\bin\Debug\Agenda.Entity.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\bin\Debug\Agenda.Entity.pdb
+C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\obj\Debug\Agenda.Entity.csproj.AssemblyReference.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\obj\Debug\Agenda.Entity.csproj.CoreCompileInputs.cache
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\obj\Debug\Agenda.Entity.dll
 C:\Users\Jakers-PC\Downloads\EDSAAcademy\Proyecto-CursoEDSAAcademy\Agenda\Agenda.Entity\obj\Debug\Agenda.Entity.pdb

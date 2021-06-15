@@ -7,38 +7,39 @@ using Agenda.Entity.Contacto;
 using Agenda.DAL;
 using System.Data;
 using System.Data.SqlClient;
-
+using Utils;
 namespace Agenda.BLL
 {
     public class Business : IBusiness, IDisposable
     {
-        private string Server, DBName;
+        private string Server, DBName, path;
 
-        public Business(string Server,string DBName)
+        public Business(string Server,string DBName, string path)
         {
             this.Server = Server;
             this.DBName = DBName;
+            this.path = path;
         }
 
         public void AbrirConexion()
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
                 }
             }
             catch (Exception e)
             {
-
+                ErrorSave.volcarErrores(e, this.path);
             }
         }
         public List<Contacto> GetContactosByFilterSQL(ContactoFilter contactoFilter)
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -71,6 +72,7 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
                 return null;
             }
         }
@@ -78,7 +80,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -107,6 +109,7 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
                 return null;
             }
         }
@@ -114,7 +117,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -123,13 +126,14 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
             }
         }
         public void DeleteContactoByIdSQL(int Id)
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -138,13 +142,14 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
             }
         }
         public void EditContactoSQL(Contacto contacto)
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -153,13 +158,14 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
             }
         }
         public void AgregarContactoSQL(Contacto contacto)
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -168,12 +174,13 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
             }
         }
         public List<string> getPaisesSQL(){
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -190,6 +197,7 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
                 return null;
             }
         }
@@ -197,7 +205,7 @@ namespace Agenda.BLL
         {
             try
             {
-                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName))
+                using (DataAccessLayer dal = new DataAccessLayer(this.Server, this.DBName, this.path))
                 {
                     var connection = dal.AbrirConexion();
 
@@ -214,6 +222,7 @@ namespace Agenda.BLL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
                 return null;
             }
         }

@@ -12,13 +12,14 @@ namespace Agenda.DAL
     public class DataAccessLayer : IDisposable
     {
         public SqlConnection connection;
-
-        public DataAccessLayer(string Server, string DBName)
+        private string path;
+        public DataAccessLayer(string Server, string DBName, string path)
         {
             connection = new SqlConnection
             {
                 ConnectionString = Configuration.GetConnectionString(Server, DBName)
             };
+            this.path = path;
         }
 
         public SqlConnection AbrirConexion()
@@ -31,6 +32,7 @@ namespace Agenda.DAL
             }
             catch (Exception e)
             {
+                ErrorSave.volcarErrores(e, this.path);
                 return null;
             }
         }

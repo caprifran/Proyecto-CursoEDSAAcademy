@@ -9,7 +9,7 @@ using Agenda.BLL;
 using System.Configuration;
 using System.ServiceModel;
 using Agenda.WSCUILGenerator;
-
+using Utils;
 namespace Agenda
 {
     public partial class AgendaIndex : System.Web.UI.Page
@@ -17,6 +17,8 @@ namespace Agenda
         private string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();  
         private string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
         private WSAreasChild WSAreasContactos = new WSAreasChild();
+        private string path = ConfigurationManager.AppSettings["PATH"].ToString();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack && Session["contactosFiltrados"] != null) {
@@ -60,7 +62,7 @@ namespace Agenda
                 {
                     DDArea.Items.Add(new ListItem { Text = area });
                 }
-                using (Business business = new Business(this.ServerUrl, this.DBName))
+                using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
                 {
                     List<string> paises = business.getPaisesSQL();
                     foreach (string pais in paises)
@@ -157,7 +159,7 @@ namespace Agenda
                 SpanAviso.InnerText = "Formato de fecha de ingreso invalido. Debe tener el siguiente formato Ej: 23/07/1996";
                 SpanAviso.Attributes.Add("class","activo");
                 args.IsValid = false;
-
+                ErrorSave.volcarErrores(ex, this.path);
             }
         }
         protected void BtnBuscar_Click(object sender, EventArgs e)
@@ -165,7 +167,7 @@ namespace Agenda
             if (Page.IsValid)
             {
                 List<Contacto> contactos;
-                using (Business business = new Business(this.ServerUrl, this.DBName))
+                using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
                 {
                     ContactoFilter filtros = new ContactoFilter();
                     filtros.ApellidoNombre = TxtApellidoNombre.Text;
@@ -183,10 +185,6 @@ namespace Agenda
                 Session["contactosFiltrados"] = contactos;
                 Application["cantPaginas"] = (int)Decimal.ToInt32(Math.Ceiling((decimal)contactos.Count / 5));
                 Application["nroPagina"] = 1;
-            }
-            else
-            {
-                // Es invalido
             }
         }
 
@@ -216,7 +214,7 @@ namespace Agenda
             GridViewRow row = (GridViewRow)button.DataItemContainer;
             int contactoId = Int32.Parse(row.Cells[0].Text);
 
-            using (Business business = new Business(this.ServerUrl, this.DBName))
+            using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
             {
                 business.DeleteContactoByIdSQL(contactoId);
             }
@@ -229,7 +227,7 @@ namespace Agenda
             GridViewRow row = (GridViewRow)boton.DataItemContainer;
             int contactoId = Int32.Parse(row.Cells[0].Text);
 
-            using (Business business = new Business(this.ServerUrl, this.DBName))
+            using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
             {
                 business.CambiarEstadoContactoByIdSQL(contactoId);
             }
@@ -243,7 +241,7 @@ namespace Agenda
             int Id = Int32.Parse(row.Cells[0].Text);
             Contacto contactoZoom;
 
-            using (Business business = new Business(this.ServerUrl, this.DBName))
+            using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
             {
                 contactoZoom = business.getContactoByIdSQL(Id);
             }
@@ -259,7 +257,7 @@ namespace Agenda
             int Id = Int32.Parse(row.Cells[0].Text);
             Contacto contactoEdit;
 
-            using (Business business = new Business(this.ServerUrl, this.DBName))
+            using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
             {
                 contactoEdit = business.getContactoByIdSQL(Id);
             }
@@ -283,8 +281,14 @@ namespace Agenda
             }
             catch (FaultException<ExceptionFaultContract> ex)
             {
-                return null;
+                ErrorSave.volcarErrores(ex, this.path);
             }
+            catch (Exception ex)
+            {
+                ErrorSave.volcarErrores(ex, this.path);
+            }
+            
+            return null;
         
         }
     }

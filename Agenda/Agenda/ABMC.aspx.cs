@@ -10,13 +10,14 @@ using Agenda.BLL;
 using System.Configuration;
 using System.ServiceModel;
 using Agenda.WSCUILGenerator;
-
+using Utils;
 namespace Agenda
 {
     public partial class ABMC : System.Web.UI.Page
     {
-        string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();
-        string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
+        private string path = ConfigurationManager.AppSettings["PATH"].ToString();
+        private string ServerUrl = ConfigurationManager.AppSettings["Server"].ToString();
+        private string DBName = ConfigurationManager.AppSettings["DBName"].ToString();
         private WSAreasChild WSAreasContactos = new WSAreasChild();
         Contacto contacto;
         protected void Page_Load(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace Agenda
             if (DDPais.Items.Count == 1 && DDArea.Items.Count == 1)
             {
 
-                using (Business business = new Business(this.ServerUrl, this.DBName))
+                using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
                 {
                     List<string> paises = business.getPaisesSQL();
                     List<string> areas = WSAreasContactos.getAreas().ToList();
@@ -145,7 +146,7 @@ namespace Agenda
                 switch (Session["Accion"])
                 {
                     case "Edit":
-                        using (Business business = new Business(this.ServerUrl, this.DBName))
+                        using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
                         {
                             business.EditContactoSQL(this.contacto);
                         }
@@ -154,7 +155,7 @@ namespace Agenda
                     case "NuevoContacto":
                         contacto.Id = 0;
                         contacto.FechaIngreso = DateTime.Now;
-                        using (Business business = new Business(this.ServerUrl, this.DBName))
+                        using (Business business = new Business(this.ServerUrl, this.DBName, this.path))
                         {
                             business.AgregarContactoSQL(this.contacto);
                         };
@@ -205,22 +206,23 @@ namespace Agenda
         protected void GenerarCUIL(object sender, EventArgs args)
         {
             if (!String.IsNullOrEmpty(TxtApellidoNombre.Text) && !String.IsNullOrEmpty(DDGenero.SelectedValue))
-            {
-                string apellido = TxtApellidoNombre.Text.Split(' ')[0];
-                string nombre = TxtApellidoNombre.Text.Split(' ')[1];
-                string genero = DDGenero.SelectedValue;
-
-                // Redefino los atributos para que al actualizar la pantalla contenga estos nuevos valores
-                this.contacto.ApellidoNombre = apellido + " " + nombre;
-                this.contacto.Genero = genero;
-
-                WSCUILGenerator.CUILGeneratorSVCClient CUIL = new WSCUILGenerator.CUILGeneratorSVCClient();
+            {                
                 try
                 {
+                    string apellido = TxtApellidoNombre.Text.Split(' ')[0];
+                    string nombre = TxtApellidoNombre.Text.Split(' ')[1];
+                    string genero = DDGenero.SelectedValue;
+
+                    // Redefino los atributos para que al actualizar la pantalla contenga estos nuevos valores
+                    this.contacto.ApellidoNombre = apellido + " " + nombre;
+                    this.contacto.Genero = genero;
+
+                    WSCUILGenerator.CUILGeneratorSVCClient CUIL = new WSCUILGenerator.CUILGeneratorSVCClient();
                     TxtCUIL.Text = CUIL.GetCUIL(nombre, apellido, genero/*, 1, 0*/);
                 }
                 catch(FaultException<ExceptionFaultContract> ex)
                 {
+                    ErrorSave.volcarErrores(ex, this.path);
                 }
             }
         }
